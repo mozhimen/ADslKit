@@ -1,4 +1,4 @@
-package com.mozhimen.dslk
+package com.mozhimen.dslk.properties
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
@@ -12,26 +12,20 @@ import androidx.appcompat.content.res.AppCompatResources
  * @Date 2024/9/2 23:05
  * @Version 1.0
  */
-inline var ImageView.src: Int
-    get() {
-        return -1
-    }
+inline var ImageView.image_src: Int
+    get() =-1
     set(value) {
         setImageDrawable(AppCompatResources.getDrawable(context, value))
     }
 
-inline var ImageView.imageDrawable: Drawable?
-    get() {
-        return null
-    }
+inline var ImageView.image_drawable: Drawable?
+    get() =null
     set(value) {
         setImageDrawable(value)
     }
 
-inline var ImageView.bitmap: Bitmap?
-    get() {
-        return null
-    }
+inline var ImageView.image_bitmap: Bitmap?
+    get() =null
     set(value) {
         setImageBitmap(value)
     }

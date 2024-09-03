@@ -1,7 +1,9 @@
-package com.mozhimen.dslk
+package com.mozhimen.dslk.properties
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.mozhimen.dslk.funcs.setOnItemClickListener
+import com.mozhimen.dslk.funcs.setOnItemLongClickListener
 
 /**
  * @ClassName RecyclerView
@@ -11,25 +13,19 @@ import androidx.recyclerview.widget.RecyclerView
  * @Version 1.0
  */
 var RecyclerView.onItemClick: (View, Int, Float, Float) -> Boolean
-    get() {
-        return { _, _, _, _ -> false }
-    }
+    get() = { _, _, _, _ -> false }
     set(value) {
         setOnItemClickListener(value)
     }
 
 var RecyclerView.onItemLongClick: (View, Int, Float, Float) -> Unit
-    get() {
-        return { _, _, _, _ -> }
-    }
+    get() = { _, _, _, _ -> }
     set(value) {
         setOnItemLongClickListener(value)
     }
 
 var RecyclerView.hasFixedSize: Boolean
-    get() {
-        return false
-    }
+    get() = false
     set(value) {
         setHasFixedSize(value)
     }

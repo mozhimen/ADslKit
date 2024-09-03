@@ -1,4 +1,4 @@
-package com.mozhimen.dslk
+package com.mozhimen.dslk.properties
 
 import android.widget.Button
 
@@ -10,9 +10,7 @@ import android.widget.Button
  * @Version 1.0
  */
 inline var Button.textAllCaps: Boolean
-    get() {
-        return false
-    }
+    get() = false
     set(value) {
         isAllCaps = value
     }

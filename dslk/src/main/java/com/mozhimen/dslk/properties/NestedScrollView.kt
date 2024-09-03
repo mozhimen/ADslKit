@@ -1,4 +1,4 @@
-package com.mozhimen.dslk
+package com.mozhimen.dslk.properties
 
 import androidx.core.widget.NestedScrollView
 
@@ -10,9 +10,7 @@ import androidx.core.widget.NestedScrollView
  * @Version 1.0
  */
 inline var NestedScrollView.fadeScrollBar: Boolean
-    get() {
-        return false
-    }
+    get() = false
     set(value) {
         isScrollbarFadingEnabled = true
     }

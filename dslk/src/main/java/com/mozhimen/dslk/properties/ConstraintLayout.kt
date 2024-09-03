@@ -1,8 +1,10 @@
-package com.mozhimen.dslk
+package com.mozhimen.dslk.properties
 
 import androidx.constraintlayout.helper.widget.Flow
 import androidx.constraintlayout.widget.Barrier
 import androidx.constraintlayout.widget.ConstraintHelper
+import com.mozhimen.dslk.utils.generateLayoutId
+import com.mozhimen.kotlin.utilk.android.util.dp2pxI
 
 /**
  * @ClassName ConstraintLayout
@@ -12,9 +14,7 @@ import androidx.constraintlayout.widget.ConstraintHelper
  * @Version 1.0
  */
 inline var Barrier.barrier_direction: Int
-    get() {
-        return -1
-    }
+    get() = -1
     set(value) {
         type = value
     }
@@ -22,137 +22,101 @@ inline var Barrier.barrier_direction: Int
 ///////////////////////////////////////////////////////
 //
 ///////////////////////////////////////////////////////
-inline var ConstraintHelper.referenceIds: String
-    get() {
-        return ""
-    }
+inline var ConstraintHelper.constraint_referenceIds: String
+    get() = ""
     set(value) {
-        referencedIds = value.split(",").map { it.toLayoutId() }.toIntArray()
+        referencedIds = value.split(",").map { it.generateLayoutId() }.toIntArray()
     }
 inline var ConstraintHelper.reference_ids: List<String>
-    get() {
-        return emptyList()
-    }
+    get() = emptyList()
     set(value) {
-        referencedIds = value.map { it.toLayoutId() }.toIntArray()
+        referencedIds = value.map { it.generateLayoutId() }.toIntArray()
     }
 
 ///////////////////////////////////////////////////////
 //
 ///////////////////////////////////////////////////////
 inline var Flow.flow_horizontalGap: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
-        setHorizontalGap(value.dp)
+        setHorizontalGap(value.dp2pxI())
     }
 
 inline var Flow.flow_verticalGap: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
-        setVerticalGap(value.dp)
+        setVerticalGap(value.dp2pxI())
     }
 
 inline var Flow.flow_wrapMode: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
         setWrapMode(value)
     }
 
 inline var Flow.flow_padding: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
-        setPadding(value.dp)
+        setPadding(value.dp2pxI())
     }
 inline var Flow.flow_paddingRight: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
-        setPaddingRight(value.dp)
+        setPaddingRight(value.dp2pxI())
     }
 
 inline var Flow.flow_paddingTop: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
-        setPaddingTop(value.dp)
+        setPaddingTop(value.dp2pxI())
     }
 inline var Flow.flow_paddingBottom: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
-        setPaddingBottom(value.dp)
+        setPaddingBottom(value.dp2pxI())
     }
 inline var Flow.flow_paddingLeft: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
-        setPaddingLeft(value.dp)
+        setPaddingLeft(value.dp2pxI())
     }
 inline var Flow.flow_orientation: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
         setOrientation(value)
     }
 inline var Flow.flow_horizontalStyle: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
         setHorizontalStyle(value)
     }
 inline var Flow.flow_verticalStyle: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
         setVerticalStyle(value)
     }
 inline var Flow.flow_horizontalBias: Float
-    get() {
-        return 0f
-    }
+    get() = 0f
     set(value) {
         setHorizontalBias(value)
     }
 inline var Flow.flow_verticalBias: Float
-    get() {
-        return 0f
-    }
+    get() = 0f
     set(value) {
         setVerticalBias(value)
     }
 inline var Flow.flow_horizontalAlign: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
         setHorizontalAlign(value)
     }
 inline var Flow.flow_verticalAlign: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
         setVerticalAlign(value)
     }
 inline var Flow.flow_maxElementWrap: Int
-    get() {
-        return 0
-    }
+    get() = 0
     set(value) {
         setMaxElementsWrap(value)
     }

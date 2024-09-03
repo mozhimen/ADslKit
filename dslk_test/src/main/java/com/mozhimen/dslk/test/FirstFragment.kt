@@ -17,73 +17,74 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
-import com.mozhimen.dslk.Binder
-import com.mozhimen.dslk.ConstraintLayout
-import com.mozhimen.dslk.EditText
-import com.mozhimen.dslk.ImageView
-import com.mozhimen.dslk.Layer
-import com.mozhimen.dslk.RecyclerView
+import com.mozhimen.dslk.constraintLayout
+import com.mozhimen.dslk.editText
+import com.mozhimen.dslk.imageView
+import com.mozhimen.dslk.layer
+import com.mozhimen.dslk.recyclerView
 import com.mozhimen.dslk.Stroke
-import com.mozhimen.dslk.TextView
-import com.mozhimen.dslk.View
-import com.mozhimen.dslk.align_vertical_to
-import com.mozhimen.dslk.background_color
-import com.mozhimen.dslk.background_drawable_state_list
-import com.mozhimen.dslk.background_res
-import com.mozhimen.dslk.bind
-import com.mozhimen.dslk.bindLiveData
-import com.mozhimen.dslk.bold
-import com.mozhimen.dslk.bottom_toBottomOf
-import com.mozhimen.dslk.bottom_toTopOf
-import com.mozhimen.dslk.center_horizontal
+import com.mozhimen.dslk.textView
+import com.mozhimen.dslk.view
+import com.mozhimen.dslk.properties.align_vertical_to
+import com.mozhimen.dslk.properties.background_color
+import com.mozhimen.dslk.properties.background_drawable_state_list
+import com.mozhimen.dslk.properties.background_res
+import com.mozhimen.dslk.properties.bind
+import com.mozhimen.dslk.properties.bindLiveData
+import com.mozhimen.dslk.values.bold
+import com.mozhimen.dslk.properties.bottom_toBottomOf
+import com.mozhimen.dslk.properties.bottom_toTopOf
+import com.mozhimen.dslk.properties.center_horizontal
 import com.mozhimen.dslk.color_state_list
 import com.mozhimen.dslk.corner_radius
-import com.mozhimen.dslk.end_toEndOf
-import com.mozhimen.dslk.end_toStartOf
+import com.mozhimen.dslk.funcs.onChildViewClick
+import com.mozhimen.dslk.funcs.textWatcher
+import com.mozhimen.dslk.properties.end_toEndOf
+import com.mozhimen.dslk.properties.end_toStartOf
 import com.mozhimen.dslk.gradient_colors
-import com.mozhimen.dslk.gradient_left_right
-import com.mozhimen.dslk.gradient_type_linear
-import com.mozhimen.dslk.gravity_center
-import com.mozhimen.dslk.horizontal_chain_style
-import com.mozhimen.dslk.layout_height
-import com.mozhimen.dslk.layout_id
-import com.mozhimen.dslk.layout_width
-import com.mozhimen.dslk.liveDataBinder
-import com.mozhimen.dslk.margin_bottom
-import com.mozhimen.dslk.margin_end
-import com.mozhimen.dslk.margin_start
-import com.mozhimen.dslk.margin_top
-import com.mozhimen.dslk.match_parent
+import com.mozhimen.dslk.values.gradient_left_right
+import com.mozhimen.dslk.values.gradient_type_linear
+import com.mozhimen.dslk.values.gravity_center
+import com.mozhimen.dslk.properties.horizontal_chain_style
+import com.mozhimen.dslk.properties.layout_height
+import com.mozhimen.dslk.properties.layout_id
+import com.mozhimen.dslk.properties.layout_width
+import com.mozhimen.dslk.properties.margin_bottom
+import com.mozhimen.dslk.properties.margin_end
+import com.mozhimen.dslk.properties.margin_start
+import com.mozhimen.dslk.properties.margin_top
+import com.mozhimen.dslk.values.match_parent
 import com.mozhimen.dslk.mos.User
-import com.mozhimen.dslk.onChildViewClick
-import com.mozhimen.dslk.onClick
-import com.mozhimen.dslk.onItemClick
-import com.mozhimen.dslk.onItemLongClick
-import com.mozhimen.dslk.onTextChange
-import com.mozhimen.dslk.packed
-import com.mozhimen.dslk.padding
-import com.mozhimen.dslk.padding_bottom
-import com.mozhimen.dslk.padding_end
-import com.mozhimen.dslk.padding_start
-import com.mozhimen.dslk.padding_top
-import com.mozhimen.dslk.parent_id
-import com.mozhimen.dslk.referenceIds
-import com.mozhimen.dslk.shape
-import com.mozhimen.dslk.shape_rectangle
+import com.mozhimen.dslk.properties.Binder
+import com.mozhimen.dslk.properties.onClick
+import com.mozhimen.dslk.properties.onItemClick
+import com.mozhimen.dslk.properties.onItemLongClick
+import com.mozhimen.dslk.properties.onTextChange
+import com.mozhimen.dslk.values.packed
+import com.mozhimen.dslk.properties.padding
+import com.mozhimen.dslk.properties.padding_bottom
+import com.mozhimen.dslk.properties.padding_end
+import com.mozhimen.dslk.properties.padding_start
+import com.mozhimen.dslk.properties.padding_top
+import com.mozhimen.dslk.values.parent_id
+import com.mozhimen.dslk.properties.constraint_referenceIds
+import com.mozhimen.dslk.properties.shape
+import com.mozhimen.dslk.values.shape_rectangle
 import com.mozhimen.dslk.solid_color
-import com.mozhimen.dslk.src
-import com.mozhimen.dslk.start_toEndOf
-import com.mozhimen.dslk.start_toStartOf
-import com.mozhimen.dslk.state_disable
-import com.mozhimen.dslk.state_enable
+import com.mozhimen.dslk.properties.image_src
+import com.mozhimen.dslk.properties.liveDataBinder
+import com.mozhimen.dslk.properties.start_toEndOf
+import com.mozhimen.dslk.properties.start_toStartOf
+import com.mozhimen.dslk.values.state_disable
+import com.mozhimen.dslk.values.state_enable
 import com.mozhimen.dslk.strokeAttr
-import com.mozhimen.dslk.textColor
-import com.mozhimen.dslk.textStyle
-import com.mozhimen.dslk.textWatcher
-import com.mozhimen.dslk.top_toBottomOf
-import com.mozhimen.dslk.top_toTopOf
+import com.mozhimen.dslk.properties.textColor
+import com.mozhimen.dslk.properties.textStyle
+import com.mozhimen.dslk.properties.top_toBottomOf
+import com.mozhimen.dslk.properties.top_toTopOf
+import com.mozhimen.dslk.shape
 import com.mozhimen.dslk.widgets.MyAdapter
-import com.mozhimen.dslk.wrap_content
+import com.mozhimen.dslk.values.wrap_content
 
 /**
  * show how to use layout dsl in [Fragment]
@@ -110,23 +111,23 @@ class FirstFragment : Fragment() {
     }
 
     private val rootView by lazy {
-        ConstraintLayout {
+        constraintLayout {
             layout_width = match_parent
             layout_height = match_parent
 
-            ImageView {
+            imageView {
                 layout_id = "ivBack"
                 layout_width = 40
                 layout_height = 40
                 margin_start = 20
                 margin_top = 20
-                src = R.drawable.ic_back_black
+                image_src = R.drawable.ic_back_black
                 start_toStartOf = parent_id
                 top_toTopOf = parent_id
                 onClick = onBackClick
             }
 
-            TextView(R.style.myTextView) {
+            textView(R.style.myTextView) {
                 layout_id = "tvCommit"
                 layout_width = wrap_content
                 layout_height = wrap_content
@@ -160,16 +161,16 @@ class FirstFragment : Fragment() {
                 }
             }
 
-            ImageView {
+            imageView {
                 layout_width = 40
                 layout_height = 40
-                src = R.drawable.ic_member_more
+                image_src = R.drawable.ic_member_more
                 align_vertical_to = "ivBack"
                 end_toEndOf = parent_id
                 margin_end = 20
             }
 
-            View {
+            view {
                 layout_id = "vDivider"
                 layout_width = match_parent
                 layout_height = 1
@@ -178,11 +179,11 @@ class FirstFragment : Fragment() {
                 top_toBottomOf = "tvCommit"
             }
 
-            Layer {
+            layer {
                 layout_id = "layer"
                 layout_width = wrap_content
                 layout_height = wrap_content
-                referenceIds = "ivDiamond,tvName,tvContent,ivAvatar,tvTime,tvSub"
+                constraint_referenceIds = "ivDiamond,tvName,tvContent,ivAvatar,tvTime,tvSub"
                 background_res = R.drawable.tag_checked_shape
                 start_toStartOf = "ivDiamond"
                 top_toTopOf = "ivDiamond"
@@ -190,13 +191,13 @@ class FirstFragment : Fragment() {
                 end_toEndOf = "tvTime"
             }
 
-            ImageView {
+            imageView {
                 layout_id = "ivDiamond"
                 layout_width = 40
                 layout_height = 40
                 margin_start = 20
                 margin_top = 40
-                src = R.drawable.diamond_tag
+                image_src = R.drawable.diamond_tag
                 start_toStartOf = "ivBack"
                 top_toBottomOf = "vDivider"
                 margin_top = 10
@@ -205,7 +206,7 @@ class FirstFragment : Fragment() {
                 }
             }
 
-            TextView {
+            textView {
                 layout_id = "tvName"
                 layout_width = wrap_content
                 layout_height = wrap_content
@@ -230,7 +231,7 @@ class FirstFragment : Fragment() {
 
             }
 
-            TextView {
+            textView {
                 layout_id = "tvContent"
                 layout_width = 0
                 layout_height = wrap_content
@@ -261,12 +262,12 @@ class FirstFragment : Fragment() {
                 )
             }
 
-            ImageView {
+            imageView {
                 layout_id = "ivAvatar"
                 layout_width = 100
                 layout_height = 100
                 margin_end = 20
-                src = R.drawable.user_portrait_gender_female
+                image_src = R.drawable.user_portrait_gender_female
                 end_toEndOf = parent_id
                 start_toEndOf = "tvContent"
                 top_toTopOf = "tvContent"
@@ -275,7 +276,7 @@ class FirstFragment : Fragment() {
                 }
             }
 
-            TextView {
+            textView {
                 layout_id = "tvSub"
                 layout_width = wrap_content
                 layout_height = wrap_content
@@ -286,7 +287,7 @@ class FirstFragment : Fragment() {
                 top_toBottomOf = "tvContent"
             }
 
-            TextView {
+            textView {
                 layout_id = "tvTime"
                 layout_width = wrap_content
                 layout_height = wrap_content
@@ -296,7 +297,7 @@ class FirstFragment : Fragment() {
                 top_toBottomOf = "ivAvatar"
             }
 
-            TextView {
+            textView {
                 layout_id = "tvCancel"
                 layout_width = wrap_content
                 layout_height = wrap_content
@@ -317,7 +318,7 @@ class FirstFragment : Fragment() {
                 onClick = onCancelClick
             }
 
-            TextView {
+            textView {
                 layout_id = "tvOk"
                 layout_width = wrap_content
                 layout_height = wrap_content
@@ -336,7 +337,7 @@ class FirstFragment : Fragment() {
                 start_toEndOf = "tvCancel"
             }
 
-            rv = RecyclerView {
+            rv = recyclerView {
                 layout_id = "rvTest"
                 layout_width = match_parent
                 layout_height = wrap_content
@@ -347,7 +348,7 @@ class FirstFragment : Fragment() {
                 onItemLongClick = onItemLongClickListener
             }
 
-            EditText {
+            editText {
                 layout_width = match_parent
                 layout_height = 50
                 textSize = 20f
