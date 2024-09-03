@@ -1,0 +1,44 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/grails-core' }
+        maven { url 'https://raw.githubusercontent.com/saki4510t/libcommon/master/repository/' }
+        maven { url 'https://gitee.com/liuchaoya/libcommon/raw/master/repository/' }
+        maven { url "https://repo.eclipse.org/content/repositories/paho-snapshots/" }
+        maven { url 'https://developer.huawei.com/repo/' }
+        maven { url "https://jitpack.io" }
+        maven { url 'https://www.jitpack.io' }
+        mavenCentral()
+        google()
+    }
+}
+
+rootProject.name = "ADslKit"
+include ':app'
+include ':dslk_anko'
+include ':dslk'
+include ':dslk_test'
+//SwiftKit
+include ':SwiftKit'
+project(':SwiftKit').projectDir = new File("D:\\WorkSpace\\GitHub\\SwiftKit")
+include ':SwiftKit:basick'
+//KUtilKit
+include ':KUtilKit'
+project(':KUtilKit').projectDir = new File("D:\\WorkSpace\\GitHub\\KUtilKit")
+include ':KUtilKit:utilk_android'
+include ':KUtilKit:utilk_kotlin'
+//ANavigateKit
+include ':ANavigateKit'
+project(':ANavigateKit').projectDir = new File("D:\\WorkSpace\\GitHub\\ANavigateKit")
+include ':ANavigateKit:navigatek_navigation'
+//AImageKit
+include ':AImageKit'
+project(':AImageKit').projectDir = new File("D:\\WorkSpace\\GitHub\\AImageKit")
+include ':AImageKit:imagek_glide'
+
