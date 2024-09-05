@@ -56,6 +56,7 @@ import com.mozhimen.dslk.properties.margin_top
 import com.mozhimen.dslk.values.match_parent
 import com.mozhimen.dslk.mos.User
 import com.mozhimen.dslk.properties.Binder
+import com.mozhimen.dslk.properties.background_color_str
 import com.mozhimen.dslk.properties.onClick
 import com.mozhimen.dslk.properties.onItemClick
 import com.mozhimen.dslk.properties.onItemLongClick
@@ -175,7 +176,7 @@ class FirstFragment : Fragment() {
                 layout_width = match_parent
                 layout_height = 1
                 margin_top = 10
-                background_color = "#eeeeee"
+                background_color_str = "#eeeeee"
                 top_toBottomOf = "tvCommit"
             }
 
@@ -352,7 +353,7 @@ class FirstFragment : Fragment() {
                 layout_width = match_parent
                 layout_height = 50
                 textSize = 20f
-                background_color = "#00ffff"
+                background_color_str = "#00ffff"
                 top_toBottomOf = "rvTest"
                 onTextChange = textWatcher {
                     onTextChanged = { text: CharSequence?, start: Int, count: Int, after: Int ->

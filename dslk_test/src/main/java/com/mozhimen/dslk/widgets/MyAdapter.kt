@@ -2,11 +2,10 @@ package com.mozhimen.dslk.widgets
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import taylor.com.adapter.MyViewHolder
 import com.mozhimen.dslk.mos.User
 import com.mozhimen.dslk.*
 import com.mozhimen.dslk.properties.align_vertical_to
-import com.mozhimen.dslk.properties.background_color
+import com.mozhimen.dslk.properties.background_color_str
 import com.mozhimen.dslk.properties.end_toEndOf
 import com.mozhimen.dslk.properties.layout_height
 import com.mozhimen.dslk.properties.layout_id
@@ -18,6 +17,7 @@ import com.mozhimen.dslk.properties.start_toStartOf
 import com.mozhimen.dslk.properties.textColor
 import com.mozhimen.dslk.properties.top_toBottomOf
 import com.mozhimen.dslk.properties.top_toTopOf
+import com.mozhimen.dslk.values.gravity_center
 import com.mozhimen.dslk.values.match_parent
 import com.mozhimen.dslk.values.parent_id
 import com.mozhimen.dslk.values.wrap_content
@@ -34,7 +34,7 @@ class MyAdapter(var myBean: List<User>?) : RecyclerView.Adapter<MyViewHolder>() 
                 layout_width = match_parent
                 margin_end = 20
                 margin_start =20
-                background_color = "#eeeeee"
+                background_color_str = "#eeeeee"
 
                 textView {
                     layout_id = "tvContent"
@@ -51,7 +51,7 @@ class MyAdapter(var myBean: List<User>?) : RecyclerView.Adapter<MyViewHolder>() 
                     layout_width = match_parent
                     layout_height = 1
                     top_toBottomOf = "tvContent"
-                    background_color = "#888888"
+                    background_color_str = "#888888"
                 }
 
                 textView {

@@ -1,11 +1,11 @@
-package taylor.com.adapter
+package com.mozhimen.dslk.widgets
 
 import android.graphics.Color
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mozhimen.dslk.mos.User
-import taylor.com.dsl.find
+import com.mozhimen.dslk.utils.find
 
 class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
