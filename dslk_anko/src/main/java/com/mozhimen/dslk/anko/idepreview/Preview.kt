@@ -1,4 +1,4 @@
-package com.mozhimen.dslk
+package com.mozhimen.dslk.anko.idepreview
 
 /**
  * @ClassName Preview
@@ -8,9 +8,8 @@ package com.mozhimen.dslk
  * @Version 1.0
  */
 import android.view.View
-import com.mozhimen.dslk.anko.core.Ui
+import com.mozhimen.dslk.anko.core.commons.Ui
 import com.mozhimen.kotlin.utilk.BuildConfig
-
 //import splitties.views.dsl.core.BuildConfig
 //import splitties.views.dsl.core.Ui
 

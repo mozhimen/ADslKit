@@ -1,15 +1,15 @@
-package com.mozhimen.dslk.anko.core
+package com.mozhimen.dslk.anko.core.proterties
+
+import android.view.View
+import android.view.ViewGroup
 
 /**
  * @ClassName LayoutParams
  * @Description TODO
  * @Author mozhimen
- * @Date 2024/9/2
+ * @Date 2024/9/10
  * @Version 1.0
  */
-import android.view.View
-import android.view.ViewGroup
-
 /**
  * **A LESS CAPITALIZED ALIAS** to [ViewGroup.LayoutParams.MATCH_PARENT] that is only
  * visible inside [ViewGroup]s.

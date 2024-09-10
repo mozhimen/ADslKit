@@ -1,4 +1,4 @@
-package com.mozhimen.dslk.anko.core
+package com.mozhimen.dslk.anko.core.commons
 
 import android.content.Context
 import android.view.View

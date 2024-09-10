@@ -1,4 +1,4 @@
-package com.mozhimen.dslk.idepreview
+package com.mozhimen.dslk.anko.idepreview
 
 //import splitties.dimensions.dip
 //import splitties.exceptions.illegalArg
@@ -14,7 +14,6 @@ package com.mozhimen.dslk.idepreview
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
-import com.mozhimen.dslk.anko.R
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract

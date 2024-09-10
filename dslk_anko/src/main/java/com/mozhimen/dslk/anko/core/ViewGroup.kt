@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalContracts::class)
-
 package com.mozhimen.dslk.anko.core
 
 /**
@@ -16,15 +14,18 @@ import android.widget.LinearLayout
 import android.widget.RadioGroup
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
+import com.mozhimen.dslk.anko.core.commons.Ui
+import com.mozhimen.dslk.anko.core.values.Theme
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
 // LinearLayout (vertical)
 
+@OptIn(ExperimentalContracts::class)
 inline fun Context.verticalLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: LinearLayout.() -> Unit = {}
 ): LinearLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
@@ -34,18 +35,20 @@ inline fun Context.verticalLayout(
     }
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun View.verticalLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: LinearLayout.() -> Unit = {}
 ): LinearLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
     return context.verticalLayout(id, theme, initView)
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun Ui.verticalLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: LinearLayout.() -> Unit = {}
 ): LinearLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
@@ -53,28 +56,31 @@ inline fun Ui.verticalLayout(
 }
 
 // LinearLayout (horizontal)
+@OptIn(ExperimentalContracts::class)
 
 inline fun Context.horizontalLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: LinearLayout.() -> Unit = {}
 ): LinearLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
     return view(::LinearLayout, id, theme, initView)
 }
+@OptIn(ExperimentalContracts::class)
 
 inline fun View.horizontalLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: LinearLayout.() -> Unit = {}
 ): LinearLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
     return context.horizontalLayout(id, theme, initView)
 }
+@OptIn(ExperimentalContracts::class)
 
 inline fun Ui.horizontalLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: LinearLayout.() -> Unit = {}
 ): LinearLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
@@ -82,28 +88,31 @@ inline fun Ui.horizontalLayout(
 }
 
 // FrameLayout
+@OptIn(ExperimentalContracts::class)
 
 inline fun Context.frameLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: FrameLayout.() -> Unit = {}
 ): FrameLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
     return view(::FrameLayout, id, theme, initView)
 }
 
+@OptIn(ExperimentalContracts::class)
 inline fun View.frameLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: FrameLayout.() -> Unit = {}
 ): FrameLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
     return context.frameLayout(id, theme, initView)
 }
+@OptIn(ExperimentalContracts::class)
 
 inline fun Ui.frameLayout(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: FrameLayout.() -> Unit = {}
 ): FrameLayout {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
@@ -111,28 +120,31 @@ inline fun Ui.frameLayout(
 }
 
 // RadioGroup
+@OptIn(ExperimentalContracts::class)
 
 inline fun Context.radioGroup(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: RadioGroup.() -> Unit = {}
 ): RadioGroup {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
     return view(::RadioGroup, id, theme, initView)
 }
+@OptIn(ExperimentalContracts::class)
 
 inline fun View.radioGroup(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: RadioGroup.() -> Unit = {}
 ): RadioGroup {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
     return context.radioGroup(id, theme, initView)
 }
+@OptIn(ExperimentalContracts::class)
 
 inline fun Ui.radioGroup(
     @IdRes id: Int = View.NO_ID,
-    @StyleRes theme: Int = NO_THEME,
+    @StyleRes theme: Int = Theme.NO_THEME,
     initView: RadioGroup.() -> Unit = {}
 ): RadioGroup {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }

@@ -12,7 +12,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.*
 import androidx.annotation.AttrRes
-import com.mozhimen.dslk.anko.core.ViewFactory
+import com.mozhimen.dslk.anko.core.commons.ViewFactory
 import java.lang.reflect.Constructor
 //import splitties.collections.forEachReversedByIndex
 //import splitties.exceptions.illegalArg
