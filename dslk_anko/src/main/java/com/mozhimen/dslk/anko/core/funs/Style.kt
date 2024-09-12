@@ -1,6 +1,7 @@
 package com.mozhimen.dslk.anko.core.funs
 
 import android.content.Context
+import android.util.TypedValue
 import android.view.View
 import androidx.annotation.IdRes
 import androidx.annotation.StyleRes
@@ -24,3 +25,12 @@ inline operator fun <reified V : View> StyleXml<V>.invoke(
     ctx.viewFactory.getThemeAttrStyledView<V>(ctx.wrapCtxIfNeeded(theme), null, styleAttr).also {
         it.id = id
     }.apply(initView)
+
+internal fun TypedValue.unexpectedThemeAttributeTypeErrorMessage(expectedKind: String): String {
+    val article = when (expectedKind.firstOrNull() ?: ' ') {
+        in "aeio" -> "an"
+        else -> "a"
+    }
+    return "Expected $article $expectedKind theme attribute but got type 0x${type.toString(16)} " +
+            "(see what it corresponds to in android.util.TypedValue constants)"
+}

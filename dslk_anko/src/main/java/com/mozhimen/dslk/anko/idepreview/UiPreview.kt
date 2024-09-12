@@ -1,22 +1,35 @@
 package com.mozhimen.dslk.anko.idepreview
 
-//import splitties.dimensions.dip
-//import splitties.exceptions.illegalArg
-//import splitties.exceptions.unsupported
-//import splitties.init.injectAsAppCtx
-//import splitties.resources.str
-//import splitties.resources.strArray
-//import splitties.resources.styledColor
-//import splitties.views.backgroundColor
-//import splitties.views.gravityCenterVertical
-//import splitties.views.padding
-//import splitties.views.setCompoundDrawables
+import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Color
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.View
+import android.widget.FrameLayout
+import com.mozhimen.dslk.anko.R
+import com.mozhimen.dslk.anko.core.commons.Ui
+import com.mozhimen.dslk.anko.core.funs.add
+import com.mozhimen.dslk.anko.core.funs.injectAsAppCtx
+import com.mozhimen.dslk.anko.core.funs.lParams
+import com.mozhimen.dslk.anko.core.funs.styledColor
+import com.mozhimen.dslk.anko.core.funs.withStyledAttributes
+import com.mozhimen.dslk.anko.core.proterties.matchParent
+import com.mozhimen.dslk.anko.core.textView
+import com.mozhimen.kotlin.elemk.commons.IA_BListener
+import com.mozhimen.kotlin.utilk.android.util.dp2pxI
+import com.mozhimen.kotlin.utilk.android.view.applyPadding
+import com.mozhimen.kotlin.utilk.android.widget.applyCompoundDrawables
+import com.mozhimen.kotlin.utilk.wrapper.UtilKRes
+import com.mozhimen.kotlin.utilk.wrapper.gainStringArray
+import java.lang.reflect.Constructor
+import java.lang.reflect.Method
+import java.lang.reflect.Proxy
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 /**
  * @ClassName UiPreview
@@ -68,123 +81,114 @@ import kotlin.contracts.contract
  *
  * See the sample for complete examples.
  */
-//open class UiPreView @JvmOverloads constructor(
-//    context: Context,
-//    attrs: AttributeSet? = null,
-//    defStyleAttr: Int = 0,
-//    createUi: ((Context) -> Ui)? = null
-//) : FrameLayout(context, attrs, defStyleAttr) {
-//
-//    init {
-//        backgroundColor = styledColor(android.R.attr.colorBackground)
-//        require(isInEditMode) { "Only intended for use in IDE!" }
-//        this.context.injectAsAppCtx()
-//        try {
-//            if (createUi == null) {
-//                init(this.context, attrs, defStyleAttr)
-//            } else {
-//                add(createUi(this.context).root, lParams(matchParent, matchParent))
-//            }
-//        } catch (t: IllegalArgumentException) {
-//            backgroundColor = Color.WHITE
-//            addView(textView {
-//                text = t.message ?: t.toString()
-//                setCompoundDrawables(top = R.drawable.ic_warning_red_96dp)
-//                gravity = gravityCenterVertical
-//                setTextColor(Color.BLUE)
-//                padding = dip(16)
-//                textSize = 24f
-//            }, lParams(matchParent, matchParent))
-//        }
-//    }
-//
-//    private fun init(context: Context, attrs: AttributeSet?, defStyleAttr: Int) {
-//        val uiClass: Class<out Ui> = withStyledAttributes(
-//            attrs = attrs,
-//            attrsRes = R.styleable.UiPreView,
-//            defStyleAttr = defStyleAttr,
-//            defStyleRes = 0
-//        ) { ta ->
-//            ta.getString(R.styleable.UiPreView_splitties_class_fully_qualified_name)?.let {
-//                try {
-//                    @Suppress("UNCHECKED_CAST")
-//                    Class.forName(it) as Class<out Ui>
-//                } catch (e: ClassNotFoundException) {
-//                    illegalArg("Did not find the specified class: $it")
-//                }
-//            } ?: ta.getString(R.styleable.UiPreView_splitties_class_package_name_relative)?.let {
-//                val packageName = context.packageName.removeSuffix(
-//                    suffix = str(R.string.splitties_views_dsl_ide_preview_package_name_suffix)
-//                )
-//                try {
-//                    @Suppress("UNCHECKED_CAST")
-//                    Class.forName("$packageName.$it") as Class<out Ui>
-//                } catch (e: ClassNotFoundException) {
-//                    val otherPackages =
-//                        context.strArray(R.array.splitties_ui_preview_base_package_names)
-//                    otherPackages.fold<String, Class<out Ui>?>(null) { foundOrNull, packageNameHierarchy ->
-//                        foundOrNull ?: try {
-//                            @Suppress("UNCHECKED_CAST")
-//                            Class.forName("$packageNameHierarchy.$it") as Class<out Ui>
-//                        } catch (e: ClassNotFoundException) {
-//                            null
-//                        }
-//                    } ?: illegalArg(
-//                        "Package-name relative class \"$it\" not found!\nDid you make a typo?\n\n" +
-//                                "Searched in the following root packages:\n" +
-//                                "- $packageName\n" +
-//                                otherPackages.joinToString(separator = "\n", prefix = "- ")
-//                    )
-//                }
-//            } ?: illegalArg("No class name attribute provided")
-//        }
-//        require(!uiClass.isInterface) { "$uiClass is not instantiable because it's an interface!" }
-//        require(Ui::class.java.isAssignableFrom(uiClass)) { "$uiClass is not a subclass of Ui!" }
-//        val ui = try {
-//            val uiConstructor: Constructor<out Ui> = uiClass.getConstructor(Context::class.java)
-//            uiConstructor.newInstance(context)
-//        } catch (e: NoSuchMethodException) {
-//            val uiConstructor = uiClass.constructors.firstOrNull {
-//                it.parameterTypes.withIndex().all { (i, parameterType) ->
-//                    (i == 0 && parameterType == Context::class.java) || parameterType.isInterface
-//                }
-//            } ?: illegalArg(
-//                "No suitable constructor found. Need one with Context as " +
-//                        "first parameter, and only interface types for other parameters, if any."
-//            )
-//
-//            @Suppress("UNUSED_ANONYMOUS_PARAMETER")
-//            val parameters = mutableListOf<Any>(context).also { params ->
-//                uiConstructor.parameterTypes.forEachIndexed { index, parameterType ->
-//                    if (index != 0) params += when (parameterType) {
-//                        CoroutineContext::class.java -> EmptyCoroutineContext
-//                        else -> Proxy.newProxyInstance(
-//                            parameterType.classLoader,
-//                            arrayOf(parameterType)
-//                        ) { proxy: Any?, method: Method, args: Array<out Any>? ->
-//                            when (method.declaringClass.name) {
-//                                "kotlinx.coroutines.CoroutineScope" -> EmptyCoroutineContext
-//                                else -> unsupported("Edit mode: stub implementation.")
-//                            }
-//                        }
-//                    }
-//                }
-//            }.toTypedArray()
-//            uiConstructor.newInstance(*parameters) as Ui
-//        }
-//        addView(ui.root, lParams(matchParent, matchParent))
-//    }
-//}
+open class UiPreView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
-@OptIn(ExperimentalContracts::class)
-private inline fun <R> View.withStyledAttributes(
-    attrs: AttributeSet?,
-    attrsRes: IntArray,
-    defStyleAttr: Int,
-    defStyleRes: Int = 0,
-    func: (styledAttrs: TypedArray) -> R
-): R {
-    contract { callsInPlace(func, InvocationKind.EXACTLY_ONCE) }
-    val styledAttrs = context.obtainStyledAttributes(attrs, attrsRes, defStyleAttr, defStyleRes)
-    return func(styledAttrs).also { styledAttrs.recycle() }
+    open fun getUi(): IA_BListener<Context,Ui>? = null
+
+    init {
+        setBackgroundColor(styledColor(android.R.attr.colorBackground))
+        require(isInEditMode) { "Only intended for use in IDE!" }
+        this.context.injectAsAppCtx()
+        try {
+            if (getUi() == null) {
+                init(this.context, attrs, defStyleAttr)
+            } else {
+                add(getUi()!!.invoke(this.context).root, lParams(matchParent, matchParent))
+            }
+        } catch (t: IllegalArgumentException) {
+            setBackgroundColor(Color.WHITE)
+            addView(textView {
+                text = t.message ?: t.toString()
+                applyCompoundDrawables(top = R.drawable.ic_warning_red_96dp)
+                gravity = Gravity.CENTER_VERTICAL
+                setTextColor(Color.BLUE)
+                applyPadding(16.dp2pxI())
+                textSize = 24f
+            }, lParams(matchParent, matchParent))
+        }
+    }
+
+    private fun init(context: Context, attrs: AttributeSet?, defStyleAttr: Int) {
+        val uiClass: Class<out Ui> = withStyledAttributes(
+            attrs = attrs,
+            attrsRes = R.styleable.UiPreView,
+            defStyleAttr = defStyleAttr,
+            defStyleRes = 0
+        ) { ta ->
+            ta.getString(R.styleable.UiPreView_splitties_class_fully_qualified_name)?.let {
+                try {
+                    @Suppress("UNCHECKED_CAST")
+                    Class.forName(it) as Class<out Ui>
+                } catch (e: ClassNotFoundException) {
+                    throw IllegalArgumentException("Did not find the specified class: $it")
+                }
+            } ?: ta.getString(R.styleable.UiPreView_splitties_class_package_name_relative)?.let {
+                val packageName = context.packageName.removeSuffix(
+                    suffix = UtilKRes.gainString(R.string.splitties_views_dsl_ide_preview_package_name_suffix)
+                )
+                try {
+                    @Suppress("UNCHECKED_CAST")
+                    Class.forName("$packageName.$it") as Class<out Ui>
+                } catch (e: ClassNotFoundException) {
+                    val otherPackages =
+                        context.gainStringArray(R.array.splitties_ui_preview_base_package_names)
+                    otherPackages.fold<String, Class<out Ui>?>(null) { foundOrNull, packageNameHierarchy ->
+                        foundOrNull ?: try {
+                            @Suppress("UNCHECKED_CAST")
+                            Class.forName("$packageNameHierarchy.$it") as Class<out Ui>
+                        } catch (e: ClassNotFoundException) {
+                            null
+                        }
+                    } ?: throw IllegalArgumentException(
+                        "Package-name relative class \"$it\" not found!\nDid you make a typo?\n\n" +
+                                "Searched in the following root packages:\n" +
+                                "- $packageName\n" +
+                                otherPackages.joinToString(separator = "\n", prefix = "- ")
+                    )
+                }
+            } ?: throw IllegalArgumentException("No class name attribute provided")
+        }
+        require(!uiClass.isInterface) { "$uiClass is not instantiable because it's an interface!" }
+        require(Ui::class.java.isAssignableFrom(uiClass)) { "$uiClass is not a subclass of Ui!" }
+        val ui = try {
+            val uiConstructor: Constructor<out Ui> = uiClass.getConstructor(Context::class.java)
+            uiConstructor.newInstance(context)
+        } catch (e: NoSuchMethodException) {
+            val uiConstructor = uiClass.constructors.firstOrNull {
+                it.parameterTypes.withIndex().all { (i, parameterType) ->
+                    (i == 0 && parameterType == Context::class.java) || parameterType.isInterface
+                }
+            } ?: run {
+                throw IllegalArgumentException(
+                    "No suitable constructor found. Need one with Context as " +
+                            "first parameter, and only interface types for other parameters, if any."
+                )
+            }
+
+            @Suppress("UNUSED_ANONYMOUS_PARAMETER")
+            val parameters = mutableListOf<Any>(context).also { params ->
+                uiConstructor.parameterTypes.forEachIndexed { index, parameterType ->
+                    if (index != 0) params += when (parameterType) {
+                        CoroutineContext::class.java -> EmptyCoroutineContext
+                        else -> Proxy.newProxyInstance(
+                            parameterType.classLoader,
+                            arrayOf(parameterType)
+                        ) { proxy: Any?, method: Method, args: Array<out Any>? ->
+                            when (method.declaringClass.name) {
+                                "kotlinx.coroutines.CoroutineScope" -> EmptyCoroutineContext
+                                else -> throw UnsupportedOperationException("Edit mode: stub implementation.")
+                            }
+                        }
+                    }
+                }
+            }.toTypedArray()
+            uiConstructor.newInstance(*parameters) as Ui
+        }
+        addView(ui.root, lParams(matchParent, matchParent))
+    }
 }
+

@@ -2,7 +2,13 @@ package com.mozhimen.dslk.anko.core.proterties
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.TypedValue
+import android.view.View
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
+import androidx.fragment.app.Fragment
 import com.mozhimen.dslk.anko.core.commons.ViewFactory
+import com.mozhimen.dslk.anko.core.funs.withResolvedThemeAttribute
 import com.mozhimen.dslk.anko.core.values.Layout
 
 /**
@@ -20,3 +26,4 @@ val Context.viewFactory: ViewFactory
     } catch (t: Throwable) {
         ViewFactory.appInstance
     }
+

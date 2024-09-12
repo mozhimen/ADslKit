@@ -1,6 +1,8 @@
 package com.mozhimen.dslk.anko.core.funs
 
 import android.content.Context
+import android.content.res.TypedArray
+import android.util.AttributeSet
 import android.view.View
 import android.widget.HorizontalScrollView
 import android.widget.ScrollView
@@ -82,4 +84,17 @@ inline fun View.wrapInHorizontalScrollView(
     return view(::HorizontalScrollView, id) {
         add(this@wrapInHorizontalScrollView, lParams(width = matchParent, height = height))
     }.apply(initView)
+}
+
+@OptIn(ExperimentalContracts::class)
+inline fun <R> View.withStyledAttributes(
+    attrs: AttributeSet?,
+    attrsRes: IntArray,
+    defStyleAttr: Int,
+    defStyleRes: Int = 0,
+    func: (styledAttrs: TypedArray) -> R
+): R {
+    contract { callsInPlace(func, InvocationKind.EXACTLY_ONCE) }
+    val styledAttrs = context.obtainStyledAttributes(attrs, attrsRes, defStyleAttr, defStyleRes)
+    return func(styledAttrs).also { styledAttrs.recycle() }
 }

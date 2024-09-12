@@ -1,18 +1,16 @@
-package com.mozhimen.dslk.anko.idepreview
+package com.mozhimen.dslk.anko.core.proterties
 
-/**
- * @ClassName Preview
- * @Description TODO
- * @Author mozhimen
- * @Date 2024/9/2
- * @Version 1.0
- */
 import android.view.View
 import com.mozhimen.dslk.anko.core.commons.Ui
 import com.mozhimen.kotlin.utilk.BuildConfig
-//import splitties.views.dsl.core.BuildConfig
-//import splitties.views.dsl.core.Ui
 
+/**
+ * @ClassName View
+ * @Description TODO
+ * @Author mozhimen
+ * @Date 2024/9/11
+ * @Version 1.0
+ */
 val View.isInPreview: Boolean
     // On release builds, BuildConfig.DEBUG is a compile time constant, and this
     //  inlined extension property evaluates to the constant false, allowing the
