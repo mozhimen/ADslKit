@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation project(':SwiftKit:basick')
+    implementation project(':ASwiftKit:basick')
 //    implementation libs.androidx.core.ktx
 //    implementation libs.androidx.appcompat
 //    implementation libs.material
