@@ -35,8 +35,8 @@ android {
 dependencies {
     implementation project(':dslk')
     implementation project(':ASwiftKit:basick')
-    implementation project(':ANavigateKit:navigatek_navigation')
-    implementation project(':AImageKit:imagek_glide')
+    implementation project(':ANavigateKit:navigation')
+    implementation project(':AImageKit:glide')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
