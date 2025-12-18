@@ -16,6 +16,7 @@ import com.mozhimen.dslk.anko.core.proterties.matchParent
 import com.mozhimen.dslk.anko.core.proterties.wrapContent
 import com.mozhimen.dslk.anko.core.view
 import com.mozhimen.kotlin.utilk.android.content.UtilKContext
+import com.mozhimen.kotlin.utilk.android.content.UtilKContextGet
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
@@ -35,7 +36,7 @@ inline fun <reified V : View> Context.inflate(
     initView: V.() -> Unit = {}
 ): V {
     contract { callsInPlace(initView, InvocationKind.EXACTLY_ONCE) }
-    return( UtilKContext.getLayoutInflater(wrapCtxIfNeeded(theme)).inflate(layoutResId,null,false) as V).also { inflatedView ->
+    return(UtilKContextGet.getSystemService_LAYOUT_INFLATER(wrapCtxIfNeeded(theme)).inflate(layoutResId,null,false) as V).also { inflatedView ->
         if (id != Layout.XML_DEFINED_ID) inflatedView.id = id
     }.apply(initView)
 }
