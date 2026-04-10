@@ -33,12 +33,7 @@ android {
 }
 
 dependencies {
-    implementation project(':ASwiftKit:basick')
-//    implementation libs.androidx.core.ktx
-//    implementation libs.androidx.appcompat
-//    implementation libs.material
-//    implementation libs.androidx.activity
-//    implementation libs.androidx.constraintlayout
+    implementation 'com.github.mozhimen.ASwiftKit:basick:2.0.4'
 
     //test
     testImplementation 'junit:junit:4.13.2'
